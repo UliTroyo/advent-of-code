@@ -6,7 +6,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code/edit/main/README.md#day-1) | Day 2 | Day 3 |
+| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) | Day 2 | Day 3 |
 | Day 4 | Day 5 | Day 6 | Day 7 | Day 8 | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
@@ -50,6 +50,5 @@ let compare_by_threes = ($depth_measurements | window 3 --stride 1 | each { math
 
 **Conclusion:** Nushell is so nice! Solving little ditties flows at the speed of thought, and when you're done, you save it as a script and you never have to do it again.
 
-[Solution to day 1 2022](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-01.nu)
-
-[Solution to day 1 2021](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-01.nu)
+- [Solution to day 1](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-01.nu) (this year)
+- [Solution to day 1](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-01.nu) (2021)
