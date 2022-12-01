@@ -45,7 +45,7 @@ let compare_depth = { if $in.0 < $in.1 {"inc"} else if $in.0 > $in.1 {"dec"} els
 
 # The actual work:
 let compare_by_threes = ($depth_measurements | window 3 --stride 1 | each { math sum } |
-  window 2 | each { $compare_depth } | wrap depth | where depth == inc | length )
+  window 2 | each $compare_depth | wrap depth | where depth == inc | length )
 ```
 
 **Conclusion:** Nushell is so nice! Solving little ditties flows at the speed of thought, and when you're done, you save it as a script and you never have to do it again.
