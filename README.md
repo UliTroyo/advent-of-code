@@ -51,4 +51,5 @@ let compare_by_threes = ($depth_measurements | window 3 --stride 1 | each { math
 **Conclusion:** Nushell is so nice! Solving little ditties flows at the speed of thought, and when you're done, you save it as a script and you never have to do it again.
 
 [Solution to day 1 2022](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-01.nu)
+
 [Solution to day 1 2021](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-01.nu)
