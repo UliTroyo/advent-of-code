@@ -24,7 +24,7 @@ let compare_to_previous = (
   window 2 |
   each $compare_depth_change |
   wrap depth |
-  where depth == inreased |
+  where depth == increased |
   length
 )
 
@@ -33,7 +33,7 @@ let compare_to_previous = (
 let compare_by_threes = (
   $depth_measurements |
   window 3 --stride 1 |
-  each { $in | reduce {|acc,it| $acc + $it }} |
+  each { math sum } |
   window 2 |
   each $compare_depth_change |
   wrap depth |
