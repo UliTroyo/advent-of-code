@@ -10,13 +10,13 @@ The wonderful thing about Nushell is how easy it makes iterative data manipulati
 
 ```nu
 let total_calories_per_elf = ( open puzzle-input.txt | lines | split list "" |
-  each {|elf| $elf | into int | reduce {|it,acc| $it + $acc }} )
+  each { into int | math sum } )
 
 # Part One
-$total_calories_per_elf | sort -r | first 1
+$total_calories_per_elf | math max
 
 # Part Two
-$total_calories_per_elf | sort -r | first 3 | reduce {|it,acc| $it + $acc }
+$total_calories_per_elf | sort -r | first 3 | math sum
 ```
 
 Conclusion: Nushell is so nice! Solving little ditties flows at the speed of thought, and when you're done, you save it as a script and you never have to do it again.
