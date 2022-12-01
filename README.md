@@ -20,3 +20,5 @@ $total_calories_per_elf | sort -r | first 3 | math sum
 ```
 
 Conclusion: Nushell is so nice! Solving little ditties flows at the speed of thought, and when you're done, you save it as a script and you never have to do it again.
+
+[Solution to day 1](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-01.nu)
