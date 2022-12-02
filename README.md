@@ -6,7 +6,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) | Day 2 | Day 3 |
+| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | Day 3 |
 | Day 4 | Day 5 | Day 6 | Day 7 | Day 8 | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
@@ -52,3 +52,10 @@ let compare_by_threes = ($depth_measurements | window 3 --stride 1 | each { math
 
 - [Solution to day 1](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-01.nu) (this year)
 - [Solution to day 1](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-01.nu) (2021)
+
+### Day 2
+
+Thrown for a loop! I'll write it up tomorrow, but where yesterday's challenges were basically built for Nushell, today's had me reaching. For this year's challenge, I wound up using truth tables, mainly to show Nushell's  great visual aspect. For 2021's challenge though... I wound up using mutable variables, a feature that has existed in Nushell only since this week.
+
+- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-02.nu) (this year)
+- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)
