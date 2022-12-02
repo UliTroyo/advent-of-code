@@ -1,3 +1,9 @@
+# This one I copy-pasted from the terminal and tried to refactor into a discernable
+# script, but I had my fun figuring out mutable variables (which are a new feature)
+# and now I don't feel like cleaning this up for now. It doesn't work as written.
+
+# TODO: get back to this maybe, but really, two of these a day was a bit much
+
 let instructions = (
   open $env.PUZZLE_FILE |
   lines |
