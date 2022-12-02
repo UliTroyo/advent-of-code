@@ -71,4 +71,4 @@ let scores = [[       me  rock  paper  scissors ];
 Overall fun, and once again, on the terminal the code was one long one-liner, but very slow and unideal. At least it's easy to understand from the visual representation. But I'll be honest, I did miss my procedural languages for this day, especially for the 2021. Tomorrow, I'm sticking to a single problem a day.
 
 - [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-02.nu) (this year)
-- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)DSLs 
+- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)
