@@ -59,7 +59,7 @@ Thrown for a loop! I'll write it up tomorrow, but where yesterday's challenges w
 
 **EDIT:** Yeah, a day later I'm thinking doing two problems in one day was a bit much for a language in a programming paradigm I'm not familiar with. I had a lot of fun figuring out mutable variables for the 2021 problem, at least, realizing they were what I needed even though it's a brand-new feature.
 
-This really is Nushell not being ideal for very procedural problems, because stuff gets very wordy. I do like my truth-table solution for the 2022 problem, though. I spent most of the time just making the source code look nice. I do love that nu/nuon can be so readable. I've been doing a lot of config stuff lately, and I've seen MANY config SDLs just this week: json, hjson, toml, lua, kdl, yaml... and nuon is still my favorite, so I wrote me up some nuon-style visual truth tables. I got to play around with Helix's column formatting keybinds, even. This is what it looks like:
+This really is Nushell not being ideal for very procedural problems, because stuff gets very wordy. I do like my truth-table solution for the 2022 problem, though. I spent most of the time just making the source code look nice. I do love that nu/nuon can be so readable. I've been doing a lot of config stuff lately, and I've seen MANY config DSLs just this week: json, hjson, toml, lua, kdl, yaml... and nuon is still my favorite, so I wrote me up some nuon-style visual truth tables. I got to play around with Helix's column formatting keybinds, even. This is what it looks like:
 
 ```nu
 # This looks like the output this code produces in Nushell, albeit less pretty.
@@ -71,4 +71,4 @@ let scores = [[       me  rock  paper  scissors ];
 Overall fun, and once again, on the terminal the code was one long one-liner, but very slow and unideal. At least it's easy to understand from the visual representation. But I'll be honest, I did miss my procedural languages for this day, especially for the 2021. Tomorrow, I'm sticking to a single problem a day.
 
 - [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-02.nu) (this year)
-- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)
+- [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)DSLs 
