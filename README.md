@@ -75,7 +75,7 @@ Overall fun, and once again, on the terminal the code was one long one-liner, bu
 
 ### Day 3
 
-It still takes me significant effort to not think of procedural solutions to these challenges. I had already done another mutable variable monstrosity for the first part, when I realized while working in the second part that instead of looping, I could just use `uniq` to break down each string to simply sift the duplicates out. It's still very wordy, as I haven't figured out my style: how much description is too much? How much can I abstract away? Funnily, what I'm happiest about accomplishing today is adding a script that opens or creates that day's file. My one-liner:
+It still takes me significant effort to not think of procedural solutions to these challenges. I had already done another mutable variable monstrosity for the first part, when I realized while working in the second part that instead of looping, I could just use `uniq` to break down each string to simply sift the duplicates out. My solutions are still very wordy, as I haven't figured out my style: how much description is too much? How much can I abstract away? Funnily, what I'm happiest about accomplishing today is adding a script that opens or creates that day's file, as my tab completion already has 4 other similarly-named files. My one-liner:
 
 ```nu
 hx (date now | date format "%Y/day-%d.nu")
