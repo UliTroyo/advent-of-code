@@ -6,7 +6,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | Day 3 |
+| --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | [Day 3](https://github.com/UliTroyo/advent-of-code#day-3) |
 | Day 4 | Day 5 | Day 6 | Day 7 | Day 8 | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
@@ -72,3 +72,29 @@ Overall fun, and once again, on the terminal the code was one long one-liner, bu
 
 - [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-02.nu) (this year)
 - [Solution to day 2](https://github.com/UliTroyo/advent-of-code/blob/main/2021/day-02.nu) (2021)
+
+### Day 3
+
+It still takes me significant effort to not think of procedural solutions to these challenges. I had already done another mutable variable monstrosity for the first part, when I realized while working in the second part that instead of looping, I could just use `uniq` to break down each string to simply sift the duplicates out. It's still very wordy, as I haven't figured out my style: how much description is too much? How much can I abstract away? Funnily, what I'm happiest about accomplishing today is adding a script that opens or creates that day's file. My one-liner:
+
+```nu
+hx (date now | date format "%Y/day-%d.nu")
+# => hx 2022/day-03.nu
+```
+
+Anyway, I hope this proves to be a good way to diminish my procedural habits when using Nushell. It _might_ be working--today I reached for `window` right away when closing over values:
+
+```nu
+# Use `window` to close over every 3 lines
+def find_badges [] {
+  let rucksacks = $in
+  let elf_groups = ( $rucksacks | window 3 --stride 3 )
+  let badges = ( $elf_groups | each {|group| each {|rucksack| split chars | uniq | str join } |
+    str join | split chars | uniq -c | where count == 3 | get value } )
+  $badges
+}
+```
+
+My next project is to stop slackin' on dataframes. I almost reached for them here in order to use `contains` to compare the two substrings that represent the rucksack compartments. It's a waste to not know how to use one of Nushell's most powerful features, so I hope I get to tackle that very soon.
+
+- [Solution to day 3](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-03.nu)
