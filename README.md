@@ -7,7 +7,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | [Day 3](https://github.com/UliTroyo/advent-of-code#day-3) |
-| Day 4 | Day 5 | Day 6 | Day 7 | Day 8 | Day 9 | Day 10 |
+| [Day 4](https://github.com/UliTroyo/advent-of-code#day-4) | Day 5 | Day 6 | Day 7 | Day 8 | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
 | Day 25 | Day 26 | Day 27 | Day 28 | Day 29 | Day 30 | Day 31 |
@@ -98,3 +98,27 @@ def find_badges [] {
 My next project is to stop slackin' on dataframes. I almost reached for them here in order to use `contains` to compare the two substrings that represent the rucksack compartments. It's a waste to not know how to use one of Nushell's most powerful features, so I hope I get to tackle that very soon.
 
 - [Solution to day 3](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-03.nu)
+
+### Day 4
+
+Today was an easy one! I think I _will_ put my pipes in a sequence after all. That better reflects how I work with the Nushell command line. I don't think I have the motivation to explain every part of every line like I did in the first day. Having done it for a single day is likely enough; Nushell is highly readable. In fact, that's what I like about Nushell over the arcanities of the Unix heritage: intelligible commands.
+
+Y'know what, let's talk about it. We have tab completion in our shells. And Nushell supports spaces in commands as "subcommands", e.g. `git clone`, so my script modules are full of sentences like `edit nu config` and `sorted sensibly`. If I were a streaming man, the audience could read my pipes in legible English: `"open poop.txt | lines | each { turn into magic sprinkles } | save intelligibility.ftw"` . I think that's important.
+
+Anyway, today I used `uniq` as the crux of my solution. What a handy construct... though I wish it was `unique`. And `sequence`. Alas. Anyway, procedural programming really is missing so much in the way of simple commands. No idea how you'd do this in C++ or Rust, but I bet they have something nasty like `std::seq(arg1, arg2)` or something equally excessive in the way of punctuation. But at least I trust they have something. What do I get with JavaScript? If I'm fancy, I get a decent generator function. If I'm not, I get a 1990's `for` loop. For all its esoterisms, Unix at least gives us such succinct and useful "programs that do one thing well" and really, there's nothing more declarative than just using sentences to do useful things. Now if only we could have decent keyboards with chords so we could feasibly use Unicode code points not in the ascii range.... you know what's better than `open my_file | do something`? How'bout `open my_file →  do something`.
+
+Back in the real world, though, I keep discovering obvious useful functionality in Nushell. Before I wrote up my solution in this repo, my solution contained the ugliest procedural `split column | take 1 down | pass it around | each {|column| into int } | 99 columns of shit on the wall` and embarrassingly encapsulated it in a `def "turn each column into a sad list just to turn it back into a column after each-ing the lists into int and then merging the whole shebang back together" [] {}` until I realized: yes, of course Nushell already has the ability to `$take_this_table | into int column1 column2 etc` without needing to split my columns into lists. Of course it does. At this point, why don't I immediately assume so? Probably because I'm solving these things at 1 in the morning  and then not going to sleep until 4 because I'm typing entire blog posts that nobody will ever read about my adventures in programming in a language that a handful of people in the world even know about (FOR NOW!).
+
+Which, incidentally, is still a silly amount of fun, even if in my delirium I wind up dreaming about helpless indentured Christmas elves who I can only save from capitalism with my little MacBook running Nushell on the terminal. Anyway, here's the line that yielded my `$table | into int` discovery:
+
+```nu
+# The poor elves are despairing with workplace bureaucracy
+# while I fiddle with trying to eke ints out of string tables
+let assignments = ( open $env.PUZZLE_FILE | lines | each { str replace -a '[,|-]' '#' |
+  split column '#' column1 column2 column3 column4 } | flatten |
+  into int column1 column2 column3 column4 )
+```
+
+But I save the day while prolonging their servitude to the invisible hand yet again!
+
+- [Solution to day 4](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-04.nu)
