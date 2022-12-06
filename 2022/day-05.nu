@@ -42,13 +42,3 @@ def test2 [instructions stacks] {
   $caca
 }
 cacs $drawing | each { split chars | reverse | get 0 | str join } | str join
-# cacs $drawing
-
-# $colstring | update 1 ($colstring | get 1 | split chars |
-#   append ($colstring | get 2 | split chars | reverse | get 0) | str join ) |
-#   update 2 ($colstring | get 2 | split chars | drop | str join)
-
-# seq 1 $inni.move.0 | reduce --fold $colstring {|it acc| $acc |
-#   update $inni.to.0 ($acc | get $inni.to.0 | split chars | append ($acc |
-#   get $inni.from.0 | split chars | reverse | get 0) | str join ) |
-#   update $inni.from.0 ($acc | get $inni.from.0 | split chars | drop | str join) }
