@@ -7,7 +7,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | [Day 3](https://github.com/UliTroyo/advent-of-code#day-3) |
-| [Day 4](https://github.com/UliTroyo/advent-of-code#day-4) | [Day 5](https://github.com/UliTroyo/advent-of-code#day-5) | [Day 6](https://github.com/UliTroyo/advent-of-code#day-6) | Day 7 | Day 8 | Day 9 | Day 10 |
+| [Day 4](https://github.com/UliTroyo/advent-of-code#day-4) | [Day 5](https://github.com/UliTroyo/advent-of-code#day-5) | [Day 6](https://github.com/UliTroyo/advent-of-code#day-6) | [Day 7](https://github.com/UliTroyo/advent-of-code#day-7) | Day 8 | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
 | Day 25 | Day 26 | Day 27 | Day 28 | Day 29 | Day 30 | Day 31 |
@@ -165,3 +165,7 @@ Oh, I think I'm pretty solid on writing my pipes like this. It's how it looks in
 JT uploaded a Nushell update vid also! I love how they clarify intent, and I wish they'd upload more Nushell content. I still have to go back to the vid where they build that cool PNG script. That's coming up as a use case for me; I need to decode and build Corel Draw files, and they're grossly proprietary, so it'll be fun to reverse engineer with Nushell.
 
 - [Solution to day 6](https://github.com/UliTroyo/advent-of-code/blob/main/2022/day-06.nu)
+
+### Day 7
+
+Recursion, huh? Well dang. I have no idea how best to tackle this with Nushell, so I'm gonna wait until the morning when my brain is less fried. Nice problem though!
