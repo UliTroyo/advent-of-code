@@ -177,12 +177,14 @@ What initially stumped me is: how do I associate a list to an item from a list? 
 So... I probably want a plugin that lets me traverse trees more nicely. Whether I'm working with HTML or JSON, what I care about first is the element names, and only secondarily care about the values, so I don't need them listed until I need them. An intuitive way of traversing trees is with directory structure, so I think I want to be able to specify 'html/body/h1/a' and receive a list of elements matching this description, kind of like the results from `ls`. I might write something like:
 
 ```nu
-register ./nu_plugin_tree
-register ./nu_plugin_has
+register './nu_plugin_tree'
+register './nu_plugin_has'
+# I'm guessing here that if --node and a subsequent --element are strings of matching value,
+# the tree plugin assumes it's a tree branch? I'd make it work.
 let fs = ( $term_output |
   tree parse --element '$ cd {element}' --node 'dir {node}' --child '(?P<size>\d+) (?P<file>\w\.?\w*)' --ignore '^\$ ls' )
 let dirs_sizes = ( $fs | tree traverse | each {|node| { dir: $node ,
-  total_size: ( get children | each {|child| if ($child | has size) { $child | get size } } | math sum ) } } )
+  total_size: ( $node | get children | each {|child| if ($child | has size) { $child | get size } } | math sum ) } } )
 $dirs_sizes | where total_size < 100000 | math sum
 ``` 
 I went and added a `has` plugin. Does Nushell really not have a `has` for table column names or record keys? Whatev, I can make it a plugin too. Here I'm thinking that `tree traverse` could return a list of nodes with path-style node names under one column, and with their contents as a list of children in another column. That way, for each, you can traverse their children as a list. The plugin itself would be in charge of caching visited paths and keeping track of circular references. It wouldn't be trivial, but it sure would be useful!
