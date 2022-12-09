@@ -7,7 +7,7 @@ I've never done an advent of code, but this seems fun. I still don't know what i
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | --- | --- | --- | --- | [Day 1](https://github.com/UliTroyo/advent-of-code#day-1) |[Day 2](https://github.com/UliTroyo/advent-of-code#day-2) | [Day 3](https://github.com/UliTroyo/advent-of-code#day-3) |
-| [Day 4](https://github.com/UliTroyo/advent-of-code#day-4) | [Day 5](https://github.com/UliTroyo/advent-of-code#day-5) | [Day 6](https://github.com/UliTroyo/advent-of-code#day-6) | [Day 7](https://github.com/UliTroyo/advent-of-code#day-7) | Day 8 | Day 9 | Day 10 |
+| [Day 4](https://github.com/UliTroyo/advent-of-code#day-4) | [Day 5](https://github.com/UliTroyo/advent-of-code#day-5) | [Day 6](https://github.com/UliTroyo/advent-of-code#day-6) | [Day 7](https://github.com/UliTroyo/advent-of-code#day-7) | [Day 8](https://github.com/UliTroyo/advent-of-code#day-8) | Day 9 | Day 10 |
 | Day 11 | Day 12 | Day 13 | Day 14 | Day 15 | Day 16 | Day 17 |
 | Day 18 | Day 19 | Day 20 | Day 21 | Day 22 | Day 23 | Day 24 |
 | Day 25 | Day 26 | Day 27 | Day 28 | Day 29 | Day 30 | Day 31 |
@@ -169,3 +169,31 @@ JT uploaded a Nushell update vid also! I love how they clarify intent, and I wis
 ### Day 7
 
 Recursion, huh? Well dang. I have no idea how best to tackle this with Nushell, so I'm gonna wait until the morning when my brain is less fried. Nice problem though!
+
+### Day 8
+
+I'll be honest, my enthusiasm for AoC kinda attenuated. Yesterday and today aren't problems I know how to elegantly solve with Nushell, and I don't like inelegance. I'm not a hacker... without the right tool for the job, it doesn't feel like a puzzle, but a slog. Day 5 was both ugly and slow, so not a usable program. My only solutions for yesterday and today would be similar. I'm assuming my problem is my ignorance of the functional style, but regardless: if I was using Zig or V, I'd be finding fun ways of multithreading this problem, not wondering how many times I can `transpose` `reject` and `flatten` before my script would be faster in Minecraft.
+
+Then I realized... is a plugin the right tool for the job, then? That's still a proper use of Nushell, right? This is my impression of a Nushell workflow:
+
+1. If you can do it in one line, do.
+2. If not, try saving a few pipes to a few variables and put THOSE into a pipe.
+3. If you need to do it more than once, save it as a command (function).
+4. If you need multiple commands, put them in a script or module.
+5. If Nushell doesn't have an elegant way of solving the problem, invoke an external command.
+6. If no external command exists, write a plugin that solves the need.
+
+Right? Nowhere in this is "brute force the problem using nothing but Nushell." In my own scripts I call `fzf` and `rg` and even `tabulate`, and even sometimes reuse node scripts (and in one case, Python). So... is writing a plugin the right solution for me here? It would be cute to have something that operates on columnar strings anyway, like `str rotate`, and then have something else that operates on both sides of a list index, instead of just `first` and `last`. Oh, and there HAS to be a way to operate on tables in a way that resembles two-dimensional lists instead of databases, no? What I want to be able to write is:
+
+```nu
+register ./nu_plugin_each_cell # iterates over cells in a table?
+register ./nu_plugin_from_cell # returns a list of four lists starting at a given cell
+( $tree_data | each-cell {|tree| if $tree > ( $tree_data | from-cell --exclude $tree |
+  each { math max } | math max ) { echo "visible" } } | length )
+```
+
+Mind you, `from-cell` would only work on tables with homogeneous data types. Is this goofy? I find myself transposing tables just to operate on columns as lists all the time. And getting four lists from `from-cell`, or even records for 'up', 'right', 'down', 'left' containing those lists could even be potentially useful for cosswords or image processing.
+
+Yeah, I think today goes unsolved for now, but I'm going to add to my plugin TODO-list. I likewise don't yet know how knowing how to use dataframes will expand my possibilities, so I think it's worth putting off.
+
+I hope nobody is actually reading this but me. I didn't know I'd enjoy the blog aspect more than the "solving the challenge" part. I'm trying to really learn Nushell and integrate it into my workflow, so the thinking bit is more fun and rewarding than the brute-forcing-a-solution bit. I guess I should peek at the Insights tab to see if anyone is expecting solutions from me. But first! Let's update what I learned about Day 7. 
