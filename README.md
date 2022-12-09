@@ -218,3 +218,5 @@ Mind you, `from-cell` would only work on tables with homogeneous data types. Is 
 Yeah, I think today goes unsolved for now, but I'm going to add to my plugin TODO-list. I likewise don't yet know how knowing how to use dataframes will expand my possibilities, so I think it's worth putting off.
 
 I hope nobody is actually reading this but me. I didn't know I'd enjoy the blog aspect more than the "solving the challenge" part. I'm trying to really learn Nushell and integrate it into my workflow, so the thinking bit is more fun and rewarding than the brute-forcing-a-solution bit. I guess I should peek at the Insights tab to see if anyone is expecting solutions from me. But first! Let's update what I learned about Day 7. 
+
+EDIT: uhhh... well shit, I checked the traffic on the insights tab and people have actually cloned and viewed this thing. Well that's embarrassing, but yeah, I've committed to not solving these problems until I write me some plugins, someday. I don't feel too bad for wasting your time though. I've seen how long you spend on TikTok ;D
