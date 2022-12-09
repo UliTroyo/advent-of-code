@@ -177,8 +177,8 @@ What initially stumped me is: how do I associate a list to an item from a list? 
 So... I probably want a plugin that lets me traverse trees more nicely. Whether I'm working with HTML or JSON, what I care about first is the element names, and only secondarily care about the values, so I don't need them listed until I need them. An intuitive way of traversing trees is with directory structure, so I think I want to be able to specify 'html/body/h1/a' and receive a list of elements matching this description, kind of like the results from `ls`. I might write something like:
 
 ```nu
-register './nu_plugin_tree'
-register './nu_plugin_has'
+register ./nu_plugin_tree
+register ./nu_plugin_has
 # I'm guessing here that if --node and a subsequent --element are strings of matching value,
 # the tree plugin assumes it's a tree branch? I'd make it work.
 let fs = ( $term_output |
