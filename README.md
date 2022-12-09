@@ -170,6 +170,25 @@ JT uploaded a Nushell update vid also! I love how they clarify intent, and I wis
 
 Recursion, huh? Well dang. I have no idea how best to tackle this with Nushell, so I'm gonna wait until the morning when my brain is less fried. Nice problem though!
 
+Edit: I thought about this problem all day, but... I was not thrilled by the potential solutions. I thought of turning the fake `ls` command outputs into `mkdir` and `touch` instructions and then traverse a real dir structure with real files but... what would that even solve? It's still recursion, and I still don't know how to approach that without brute force, and that doesn't seem like the Nushell way to do things. I'm writing this on Day 8, when I decided that the Nushell solution to this specific problem is to write a plugin. I sketched out a few possible plugins for today, but for Day 7? Let's think...
+
+What initially stumped me is: how do I associate a list to an item from a list? How do I tell Nushell "hey, until you get to another line that starts-with '$', grab those list items and 'nest them' under this list item." What does that even look like? I remember I was trying to work with the `fetch` command (am I wrong to think of it as a thin wrapper around `curl`?) but didn't know how to proceed after using `into html`, because the resulting structure is an unreadable bunch of `get children.0`. Now `table -e` at least helps me see what's inside, but the tree structure is still awful to traverse.
+
+So... I probably want a plugin that lets me traverse trees more nicely. Whether I'm working with HTML or JSON, what I care about first is the element names, and only secondarily care about the values, so I don't need them listed until I need them. An intuitive way of traversing trees is with directory structure, so I think I want to be able to specify 'html/body/h1/a' and receive a list of elements matching this description, kind of like the results from `ls`. I might write something like:
+
+```nu
+register ./nu_plugin_tree
+register ./nu_plugin_has
+let fs = ( $term_output |
+  tree parse --element '$ cd {element}' --node 'dir {node}' --child '(?P<size>\d+) (?P<file>\w\.?\w*)' --ignore '^\$ ls' )
+let dirs_sizes = ( $fs | tree traverse | each {|node| { dir: $node ,
+  total_size: ( get children | each {|child| if ($child | has size) { $child | get size } } | math sum ) } } )
+$dirs_sizes | where total_size < 100000 | math sum
+``` 
+I went and added a `has` plugin. Does Nushell really not have a `has` for table column names or record keys? Whatev, I can make it a plugin too. Here I'm thinking that `tree traverse` could return a list of nodes with path-style node names under one column, and with their contents as a list of children in another column. That way, for each, you can traverse their children as a list. The plugin itself would be in charge of caching visited paths and keeping track of circular references. It wouldn't be trivial, but it sure would be useful!
+
+Anyway, enough fantasizing for one day. Like with today's problem, I'm actually writing these down as TODO, because these would actually be pretty neat to have.
+
 ### Day 8
 
 I'll be honest, my enthusiasm for AoC kinda attenuated. Yesterday and today aren't problems I know how to elegantly solve with Nushell, and I don't like inelegance. I'm not a hacker... without the right tool for the job, it doesn't feel like a puzzle, but a slog. Day 5 was both ugly and slow, so not a usable program. My only solutions for yesterday and today would be similar. I'm assuming my problem is my ignorance of the functional style, but regardless: if I was using Zig or V, I'd be finding fun ways of multithreading this problem, not wondering how many times I can `transpose` `reject` and `flatten` before my script would be faster in Minecraft.
